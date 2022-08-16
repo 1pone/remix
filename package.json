@@ -13,17 +13,22 @@
     "@emotion/react": "latest",
     "@emotion/server": "latest",
     "@emotion/styled": "latest",
+    "@mui/icons-material": "^5.8.4",
     "@mui/material": "latest",
     "@remix-run/react": "latest",
     "@remix-run/serve": "latest",
+    "ahooks": "^3.5.2",
+    "immer": "^9.0.15",
     "react": "latest",
     "react-dom": "latest",
-    "remix": "latest"
+    "remix": "latest",
+    "zustand": "^4.0.0"
   },
   "devDependencies": {
     "@remix-run/dev": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "prettier": "^2.7.1",
     "typescript": "latest"
   },
   "engines": {
