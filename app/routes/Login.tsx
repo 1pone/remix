@@ -11,8 +11,8 @@ import {
   RadioGroup,
   styled,
   TextField,
-  Link,
   Divider,
+  Typography,
 } from "@mui/material";
 import React, { FC, useState } from "react";
 import {
@@ -28,6 +28,14 @@ import {
   REGION_INTERNATIONAL,
   RegionType,
 } from "~/src/constant";
+import { useTranslation } from "react-i18next";
+import { useChangeLanguage } from "remix-i18next";
+import { Link } from "remix";
+
+// This tells remix to load the "home" namespace
+export let handle = {
+  i18n: "login",
+};
 
 const HeaderWrapper = styled(Box)`
   height: 56px;
@@ -62,6 +70,8 @@ const InputWrapper = styled(Box)`
 `;
 
 const Login: FC = () => {
+  let { t } = useTranslation("login");
+
   const [showPassword, { toggle: toggleShowPassword }] = useToggle(false);
   const [region, setRegion] = useState<RegionType>();
 
@@ -80,7 +90,11 @@ const Login: FC = () => {
       <ContentWrapper maxWidth="sm">
         <InputWrapper>
           <AccountCircleOutlined />
-          <TextField label="account" variant="standard" sx={{ width: 224 }} />
+          <TextField
+            label={t("account")}
+            variant="standard"
+            sx={{ width: 224 }}
+          />
         </InputWrapper>
 
         <InputWrapper>
@@ -143,7 +157,6 @@ const Login: FC = () => {
             Login
           </Button>
         </Box>
-
         <Box
           sx={{
             display: "flex",
@@ -151,9 +164,17 @@ const Login: FC = () => {
             height: "20px",
           }}
         >
-          <Link href="#">Forget password</Link>
+          <Link to={`/login?lng=zh-CN`}>
+            <Typography onClick={() => useChangeLanguage("zh-CN")}>
+              Forget password
+            </Typography>
+          </Link>
           <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
-          <Link href="#">Change password</Link>
+          <Link to={`/login?lng=en-US`}>
+            <Typography onClick={() => useChangeLanguage("en-US")}>
+              Change password
+            </Typography>
+          </Link>
         </Box>
       </ContentWrapper>
     </>
